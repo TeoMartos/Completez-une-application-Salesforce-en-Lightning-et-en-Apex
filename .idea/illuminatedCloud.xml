@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="IlluminatedCloudSettings">
+    <option name="connections">
+      <list>
+        <IlluminatedCloudConnection>
+          <option name="connectionName" value="vscodeOrg" />
+          <option name="connectionType" value="OAUTH" />
+          <option name="defaultModuleName" value="Completez-une-application-Salesforce-en-Lightning-et-en-Apex" />
+        </IlluminatedCloudConnection>
+      </list>
+    </option>
+  </component>
+</project>

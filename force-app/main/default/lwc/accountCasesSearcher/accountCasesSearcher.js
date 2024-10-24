@@ -8,7 +8,7 @@ const COLUMNS = [
 ];
 
 export default class AccountCaseSearchComponent extends LightningElement {
-    @api recordId;
+    @api recordId; //les @ permettent d'etre appelé ailleurs
     @track cases;
     @track error;
     searchTerm = '';
@@ -21,11 +21,18 @@ export default class AccountCaseSearchComponent extends LightningElement {
     handleSearch() {
         findCasesBySubject({ accountId: this.recordId, subjectSearchTerm: this.searchTerm })
             .then(result => {
-                this.cases = result;
-                this.error = undefined;
+                if (result.length === 0) {
+                // check si la recherche n'existe pas
+                    this.error = 'Le sujet que vous recherchez n\'existe pas.';
+                    this.cases = undefined; //pas de recherche -> on affiche rien
+                } else {
+                    this.cases = result; // Si des résultats sont trouvés, les afficher
+                    this.error = undefined;
+                }
             })
             .catch(error => {
                 this.error = 'Une erreur est survenue lors de la recherche des cases.';
+                this.cases = undefined;
             });
     }
 }
