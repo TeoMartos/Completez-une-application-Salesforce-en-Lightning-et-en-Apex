@@ -2,17 +2,17 @@
     <lightning-card title="Opportunités du Compte" icon-name="standard:opportunity">
         <div class=slds-max-large-size_xx-large>
             <lightning-button class="slds-m-bottom_small" label="Rafraîchir" onclick={handleRafraichir} variant="brand"></lightning-button>
-            <template if:false={opportunities}>
+            <template lwc:if={opportunities}>
                 <lightning-datatable data={opportunities}
                                      columns={columns}
                                      key-field="Id"
                                      class="slds-box slds-theme_default">
                 </lightning-datatable>
             </template>
-            <template if:true={error}>
-                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_success" role="contentinfo">
+            <template lwc:else>
+                <div class={errorStyle} role="contentinfo">
                     <span class="slds-assistive-text">Erreur</span>
-                    <h2>Une erreur s'est produite lors du chargement des opportunités.</h2>
+                    <p class="slds-p-around_medium slds-text-color_error">{error}</p>
                 </div>
             </template>
         </div>

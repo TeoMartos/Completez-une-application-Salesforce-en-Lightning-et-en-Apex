@@ -17,4 +17,15 @@ public class TestDataFactory {
         insert opp;
         return opp;
     }
+
+    public static Case createTestCase(Id accountId) {
+        Case c = new Case(
+                Subject='Broken',
+                Status='Closed',
+                Priority='High',
+                AccountId=accountId
+        );
+        insert c;
+        return c;
+    }
 }
