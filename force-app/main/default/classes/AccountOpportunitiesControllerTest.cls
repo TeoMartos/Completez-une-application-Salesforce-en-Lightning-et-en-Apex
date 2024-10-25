@@ -3,13 +3,12 @@ private class AccountOpportunitiesControllerTest {
     @TestSetup
     static void setup() {
         Account testAccount = TestDataFactory.createTestAccount();
-        Account testAccount2 = TestDataFactory.createTestAccount();
-        TestDataFactory.createTestOpportunity(testAccount.Id);
     }
 
     @IsTest
     static void testGetOpportunities() {
         Account testAccount = [SELECT Id FROM Account LIMIT 1];
+        TestDataFactory.createTestOpportunity(testAccount.Id);
         Test.startTest();
         List<Opportunity> results = AccountOpportunitiesController.getOpportunities(testAccount.Id);
         Test.stopTest();
@@ -18,9 +17,9 @@ private class AccountOpportunitiesControllerTest {
 
     @IsTest
     static void testGetNoOpportunities() {
-        Account testAccount2 = [SELECT Id FROM Account LIMIT 1];
+        Account testAccount = [SELECT Id FROM Account LIMIT 1];
         Test.startTest();
-        List<Opportunity> results = AccountOpportunitiesController.getOpportunities(testAccount2.Id);
+        List<Opportunity> results = AccountOpportunitiesController.getOpportunities(testAccount.Id);
         Test.stopTest();
         Assert.areEqual(0, results.size(), 'Should not return opportunity');
     }
