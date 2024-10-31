@@ -28,7 +28,7 @@ export default class AccountOpportunitiesViewer extends LightningElement {
         refreshApex(this.wiredOpportunitiesResult);
     }
     get errorStyle () { //fonction error style qui permet de rendre dynamique le css du message d'erreur
-        return this.error && this.error.includes('Vous n\'avez pas d\'opportunities associés au compte')
+        return this.error && this.error.includes('Vous n\'avez pas d\'opportunities associées au compte')
         ? 'slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info' : 'slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error'
     }
 }
