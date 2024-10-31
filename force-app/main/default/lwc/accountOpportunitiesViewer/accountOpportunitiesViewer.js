@@ -18,7 +18,7 @@ export default class AccountOpportunitiesViewer extends LightningElement {
         this.wiredOpportunitiesResult = result;
         if (result.data) {
             this.opportunities = result.data.length > 0 ? result.data : null;
-            this.error = result.data.length == 0 ? 'Vous n\'avez pas d\'opportunities associés au compte' : null;
+            this.error = result.data.length == 0 ? 'Vous n\'avez pas d\'opportunities associées au compte' : null;
         } else if (result.error) {
             this.error = 'Une erreur s\'est produite lors du chargement des opportunités.'
             this.opportunities = undefined; //pas d'opportunite -> on affiche rien
